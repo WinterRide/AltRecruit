@@ -25,21 +25,21 @@ export default function ListingCard({
   jobdesc: string;
   criteria: string[];
   salary: number;
-  workStatus: "Part time" | "Full time" | "One time job";
+  workStatus: string;
   requirement: string[];
 }) {
   const [reqOpen, setReqOpen] = useState(false);
 
   return (
     <>
-      <Card className="w-fit shadow">
-        <CardHeader className="space-y-0 flex md:flex-row md:items-end justify-between gap-4 md:gap-16">
-          <CardTitle className="text-4xl">{company}</CardTitle>
-          <h2 className="text-2xl">{jobdesc}</h2>
+      <Card className="w-full shadow">
+        <CardHeader className="space-y-0 flex md:flex-row items-center justify-between gap-4 md:gap-16">
+          <CardTitle className="text-3xl">{company}</CardTitle>
+          <p className="text-2xl">{jobdesc}</p>
         </CardHeader>
         <CardContent className="text-lg flex flex-col md:flex-row md:items-start justify-between gap-4 md:gap-16">
           <div>
-            <ul className="list-disc pl-6">
+            <ul className="list-disc pl-4">
               {criteria.slice(0, 3).map((c) => (
                 <li key={c}>{c}</li>
               ))}
@@ -63,7 +63,7 @@ export default function ListingCard({
         </CardContent>
         <CardFooter className="flex flex-row items-start justify-between">
           <Button variant="link" className="text-lg p-0 max-md:hidden">
-            View requirements
+            <p>View requirements</p>
             <ChevronDown
               className={cn(
                 "w-6 h-6 ml-2 transition-all",
