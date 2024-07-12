@@ -10,19 +10,18 @@ import { useEffect } from "react";
 export default function Index() {
   const router = useRouter();
   useEffect(() => {
-    // const user = localStorage.getItem("user");
-    // if (!user) {
-    //   redirect("/account/login");
-    // }
-    // const role = user ? JSON.parse(user).role : "jobseeker";
-    // if (role === "jobseeker") {
-    //   redirect("/jobs");
-    // }
+    const user = localStorage.getItem("user");
+    if (!user) {
+      router.push("/account/login");
+    }
+    const role = user ? JSON.parse(user).role : "jobseeker";
+    if (role === "jobseeker") {
+      router.push("/jobs");
+    }
   }, []);
 
   function handleCreateRecruitment() {
-    // ! CEK DETAILS
-    // router.push("/recruits/create");
+    router.push("/recruits/create");
   }
 
   const popularRoles = [
