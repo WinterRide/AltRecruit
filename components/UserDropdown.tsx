@@ -32,7 +32,7 @@ export default function UserDropdown({
       <DropdownMenuContent className="w-fit min-w-0">
         <div className="w-full rounded p-1 flex flex-col">
           <span className="text-xs">Role</span>
-          <span className="font-semibold flex items-center ">
+          <span className="font-semibold flex items-center">
             {capitalize(role)}
           </span>
         </div>
