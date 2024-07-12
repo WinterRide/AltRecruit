@@ -21,3 +21,23 @@ type TestSchedule = {
   date: string;
   duration: string;
 };
+
+type User = {
+  name: string;
+  email: string;
+  phone: string;
+  role: string;
+  details: UserDetails | RecruiterDetails;
+};
+
+type UserDetails = {
+  city: string;
+  country: string;
+  domicile: string;
+  avatar: string;
+};
+
+type RecruiterDetails = {
+  location: string;
+  website: string;
+};
