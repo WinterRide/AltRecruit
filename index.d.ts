@@ -41,3 +41,7 @@ type RecruiterDetails = {
   location?: string;
   website?: string;
 };
+
+type Company = {
+  name?
+}
