@@ -10,42 +10,19 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-const PopularTab = () => {
-  const popularRoles = [
-    {
-      role: "Gardener",
-      requirements: "Can cut trees and flowers.",
-      hired: 122600,
-    },
-    {
-      role: "ART Worker",
-      requirements: "Able to handle a baby and cook foods.",
-      hired: 30000,
-    },
-    {
-      role: "Office Boy",
-      requirements: "Can clean the necessities.",
-      hired: 10000,
-    },
-  ];
-
-  const topRecruiters = [
-    {
-      role: "Tokopedia",
-      hired: 60000,
-    },
-    {
-      role: "GoClean",
-      hired: 45000,
-    },
-  ];
-
+const PopularTab = ({
+  popularroles,
+  toprecruiters,
+}: {
+  popularroles: object;
+  toprecruiters: object;
+}) => {
   return (
     <>
       <p className="w-full justify-start items-center text-2xl font-bold mt-2">
         Top Popular Jobs
       </p>
-      {popularRoles.map((role, index) => (
+      {popularroles.map((role, index) => (
         <Card className="w-full mt-6">
           <CardHeader className="flex justify-start">
             <CardTitle className="text-xl">{role.role}</CardTitle>
@@ -72,7 +49,7 @@ const PopularTab = () => {
       <p className="w-full justify-start items-center text-2xl font-bold mt-6">
         Top Recruiters
       </p>
-      {topRecruiters.map((rec, index) => (
+      {toprecruiters.map((rec, index) => (
         <Card className="w-full mt-6">
           <CardHeader className="flex justify-start">
             <CardTitle className="text-xl">{rec.role}</CardTitle>

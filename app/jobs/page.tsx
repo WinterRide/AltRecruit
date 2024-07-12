@@ -11,6 +11,35 @@ export default function SearchPage() {
   const workStatus = ["Full time", "Part time", "One time job"];
   const requirements = ["Citizen Card", "Birth Certificate", "Resume / CV"];
 
+  const popularRoles = [
+    {
+      role: "Gardener",
+      requirements: "Can cut trees and flowers.",
+      hired: 122600,
+    },
+    {
+      role: "ART Worker",
+      requirements: "Able to handle a baby and cook foods.",
+      hired: 30000,
+    },
+    {
+      role: "Office Boy",
+      requirements: "Can clean the necessities.",
+      hired: 10000,
+    },
+  ];
+
+  const topRecruiters = [
+    {
+      role: "Tokopedia",
+      hired: 60000,
+    },
+    {
+      role: "GoClean",
+      hired: 45000,
+    },
+  ];
+
   const testCases = [
     {
       id: 1,
@@ -66,7 +95,10 @@ export default function SearchPage() {
 
         {/* Popular */}
         <div className="flex flex-col w-[20%] bg-white shadow-md rounded-lg px-6 py-4 h-[calc(100vh-8rem)] sticky top-[1rem] max-lg:hidden">
-          <PopularTab />
+          <PopularTab
+            popularroles={popularRoles}
+            toprecruiters={topRecruiters}
+          />
         </div>
       </main>
     </>
