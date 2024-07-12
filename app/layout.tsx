@@ -4,6 +4,7 @@ import { TailwindIndicator } from "@/components/TailwindIndicator";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -28,6 +29,7 @@ export default function RootLayout({
           {children}
         </main>
         <TailwindIndicator />
+        <Footer />
       </body>
     </html>
   );
