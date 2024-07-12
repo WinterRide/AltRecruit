@@ -1,15 +1,27 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ListingCard from "@/components/ListingCard";
 import { Separator } from "@/components/ui/separator";
 import FilterComponent from "@/components/FIlterComponent";
 import PopularTab from "@/components/PopularTab";
+import { redirect } from "next/navigation";
 
 export default function SearchPage() {
   const [reqOpen, setReqOpen] = useState(false);
   const workStatus = ["Full time", "Part time", "One time job"];
   const requirements = ["Citizen Card", "Birth Certificate", "Resume / CV"];
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (!user) {
+      redirect("/account/login");
+    }
+    const role = user ? JSON.parse(user).role : "jobseeker";
+    if (role === "company") {
+      redirect("/recruits");
+    }
+  }, []);
 
   const popularRoles = [
     {

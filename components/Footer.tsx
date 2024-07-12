@@ -50,27 +50,25 @@ export default function Footer() {
       <h1 className="font-semibold text-2xl">AltRecruit</h1>
       <div>
         {links.map((link) => (
-          <Button
-            variant="link"
-            key={link.text}
-            className="text-primary-foreground text-lg"
-          >
-            <Link key={link.text} href={link.href}>
+          <Link key={link.text} href={link.href}>
+            <Button variant="link" className="text-primary-foreground text-lg">
               {link.text}
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         ))}
       </div>
       <div>
         {socials.map((social) => (
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-primary-foreground text-lg hover:bg-muted-foreground/50 hover:text-primary-foreground"
-            key={social.href}
-          >
-            <Link href={social.href}>{social.icon}</Link>
-          </Button>
+          <Link key={social.href} href={social.href}>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-primary-foreground text-lg hover:bg-muted-foreground/50 hover:text-primary-foreground"
+              key={social.href}
+            >
+              {social.icon}
+            </Button>
+          </Link>
         ))}
       </div>
       <p>&copy; {new Date().getFullYear()} AltRecruit. All rights reserved.</p>

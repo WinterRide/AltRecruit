@@ -25,19 +25,19 @@ type TestSchedule = {
 type User = {
   name: string;
   email: string;
-  phone: string;
+  phone?: string;
   role: string;
-  details: UserDetails | RecruiterDetails;
+  details?: UserDetails | RecruiterDetails;
 };
 
 type UserDetails = {
-  city: string;
-  country: string;
-  domicile: string;
-  avatar: string;
+  city?: string;
+  country?: string;
+  domicile?: string;
+  avatar?: string;
 };
 
 type RecruiterDetails = {
-  location: string;
-  website: string;
+  location?: string;
+  website?: string;
 };

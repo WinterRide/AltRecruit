@@ -9,17 +9,20 @@ import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/hooks/auth";
+import { register } from "module";
 
 export default function Index() {
   const router = useRouter();
 
-  const { login } = useAuth({
+  const { register } = useAuth({
     middleware: "guest",
     redirectIfAuthenticated: "/",
   });
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confPassword, setConfPassword] = useState("");
   const [shouldRemember, setShouldRemember] = useState(false);
   const [errors, setErrors] = useState([]);
   const [status, setStatus] = useState(null);
@@ -35,9 +38,11 @@ export default function Index() {
   const submitForm = async (event: any) => {
     event.preventDefault();
 
-    login({
+    register({
+      name,
       email,
       password,
+      confPassword,
       remember: shouldRemember,
       setErrors,
       setStatus,
@@ -58,12 +63,25 @@ export default function Index() {
       <div className="flex items-center justify-center py-12">
         <form onSubmit={submitForm} className="mx-auto grid w-[350px] gap-6">
           <div className="grid gap-2 text-center">
-            <h1 className="text-3xl font-bold">Login</h1>
+            <h1 className="text-3xl font-bold">Register</h1>
             <p className="text-balance text-muted-foreground">
-              Enter your email below to login to your account
+              Create an account to get started
             </p>
           </div>
           <div className="grid gap-4">
+            <div className="grid gap-2">
+              <Label htmlFor="name">Full Name</Label>
+              <Input
+                id="name"
+                type="text"
+                name="name"
+                value={name}
+                placeholder="Full Name"
+                required
+                onChange={(event) => setName(event.target.value)}
+                autoFocus
+              />
+            </div>
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -74,19 +92,10 @@ export default function Index() {
                 placeholder="email@example.com"
                 required
                 onChange={(event) => setEmail(event.target.value)}
-                autoFocus
               />
             </div>
             <div className="grid gap-2">
-              <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
-                <Link
-                  href="/account/forgot"
-                  className="ml-auto inline-block text-sm underline"
-                >
-                  Forgot your password?
-                </Link>
-              </div>
+              <Label htmlFor="password">Password</Label>
               <Input
                 id="password"
                 type="password"
@@ -98,14 +107,27 @@ export default function Index() {
                 autoComplete="current-password"
               />
             </div>
+            <div className="grid gap-2">
+              <Label htmlFor="confPassword">Confirm Password</Label>
+              <Input
+                id="confPassword"
+                type="password"
+                name="confPassword"
+                value={confPassword}
+                placeholder="••••••••"
+                onChange={(event) => setConfPassword(event.target.value)}
+                required
+                autoComplete="current-password"
+              />
+            </div>
             <Button type="submit" className="w-full">
-              Login
+              Sign Up
             </Button>
           </div>
           <div className="mt-4 text-center text-sm">
-            Don&apos;t have an account? &nbsp;
-            <Link href="/account/register" className="underline">
-              Sign up
+            Already have an account? &nbsp;
+            <Link href="/account/login" className="underline">
+              Sign In
             </Link>
           </div>
         </form>

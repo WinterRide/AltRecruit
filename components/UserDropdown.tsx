@@ -5,6 +5,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { capitalize } from "@/lib/utils";
 import { LogOut, SquareUser } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -16,10 +17,6 @@ export default function UserDropdown({
   children: React.ReactNode | React.ReactNode[];
   role: string;
 }) {
-  function capitalize(str: string) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-
   function handleLogout() {
     // ! API CALL HERE
     localStorage.removeItem("user");
@@ -33,16 +30,16 @@ export default function UserDropdown({
         <div className="w-full rounded p-1 flex flex-col">
           <span className="text-xs">Role</span>
           <span className="font-semibold flex items-center">
-            {capitalize(role)}
+            {role && capitalize(role)}
           </span>
         </div>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <Link href="/account" className="flex gap-2">
+        <Link href="/account" className="flex gap-2">
+          <DropdownMenuItem>
             <SquareUser size={18} strokeWidth={1.5} />
             Profile
-          </Link>
-        </DropdownMenuItem>
+          </DropdownMenuItem>
+        </Link>
         <DropdownMenuSeparator />
         <DropdownMenuItem className="flex gap-2" onClick={handleLogout}>
           <LogOut size={18} strokeWidth={1.5} />

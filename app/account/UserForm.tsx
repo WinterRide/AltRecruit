@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { capitalize, cn, getInitials } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Pencil } from "lucide-react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -34,9 +34,19 @@ const formSchema = z.object({
 });
 
 export default function ProfileForm({ user }: { user: User }) {
+  const details = (user.details ?? {}) as UserDetails;
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: user,
+    defaultValues: {
+      name: user.name || "",
+      email: user.email || "",
+      phone: user.phone || "",
+      city: details.city || "",
+      country: details.country || "",
+      domicile: details.domicile || "",
+      avatar: details.avatar || "",
+    },
   });
 
   function handleSubmit(values: z.infer<typeof formSchema>) {
@@ -76,7 +86,7 @@ export default function ProfileForm({ user }: { user: User }) {
     },
   ]);
 
-  const avatarInput = useRef<HTMLInputElement>(null);
+  console.log(user);
 
   return (
     <Form {...form}>
@@ -87,6 +97,7 @@ export default function ProfileForm({ user }: { user: User }) {
         <div className="flex flex-col gap-2">
           {fields.map(({ field, description, editing }) => (
             <FormField
+              key={field}
               control={form.control}
               name={field}
               render={({ field }) => (
