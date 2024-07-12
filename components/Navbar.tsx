@@ -12,12 +12,7 @@ export default function Navbar() {
     name: string;
     avatar: string;
     role: string;
-  }>({
-    name: "User",
-    avatar:
-      "https://plus.unsplash.com/premium_photo-1683121366070-5ceb7e007a97?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fHBvcnRyYWl0fGVufDB8fDB8fHww",
-    role: "user",
-  });
+  }>();
 
   useEffect(() => {
     const user = localStorage.getItem("user");
@@ -29,7 +24,7 @@ export default function Navbar() {
   return (
     <nav className="flex justify-between items-center px-8 py-6 bg-primary text-background">
       <div className="flex justify-center items-center gap-8">
-        <h1 className="text-2xl font-bold">SeekJob</h1>
+        <h1 className="text-2xl font-semibold">AltRecruit</h1>
         <div className="flex justify-center gap-4">
           <Button
             variant="link"
@@ -70,7 +65,7 @@ export default function Navbar() {
           </UserDropdown>
         ) : (
           <Button className="bg-primary-foreground text-[1rem] text-foreground hover:bg-primary-foreground/75">
-            <a href="/account/login">Login</a>
+            <Link href="/account/login">Login</Link>
           </Button>
         )}
       </div>
