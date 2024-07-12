@@ -29,7 +29,9 @@ export default function Index() {
   const [status, setStatus] = useState(null);
 
   useEffect(() => {
+    // @ts-ignore
     if (router.reset?.length > 0 && errors.length === 0) {
+        // @ts-ignore
       setStatus(atob(router.reset));
     } else {
       setStatus(null);
@@ -44,6 +46,7 @@ export default function Index() {
       email,
       password,
       password_confirmation: confPassword,
+      role,
       remember: shouldRemember,
       setErrors,
       setStatus,
@@ -139,7 +142,6 @@ export default function Index() {
                 </TabsTrigger>
               </TabsList>
             </Tabs>
-
             <Button type="submit" className="w-full">
               Sign Up
             </Button>

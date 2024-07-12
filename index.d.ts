@@ -38,10 +38,9 @@ type UserDetails = {
 };
 
 type RecruiterDetails = {
-  location?: string;
-  website?: string;
+  companyName?: string;
+  companyAddress?: string;
+  companyWebsite?: string;
+  companyEmail?: string;
+  companyNumber?: string;
 };
-
-type Company = {
-  name?
-}

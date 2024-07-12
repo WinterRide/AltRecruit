@@ -15,3 +15,7 @@ export function getInitials(name: string) {
 export function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+export function splitCamelCase(str: string) {
+  return str.replace(/([a-z])([A-Z])/g, "$1 $2");
+}

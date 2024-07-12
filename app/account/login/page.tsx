@@ -25,7 +25,9 @@ export default function Index() {
   const [status, setStatus] = useState(null);
 
   useEffect(() => {
+    // @ts-ignore
     if (router.reset?.length > 0 && errors.length === 0) {
+      // @ts-ignore
       setStatus(atob(router.reset));
     } else {
       setStatus(null);
