@@ -20,7 +20,6 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
             "user",
             JSON.stringify({
               ...res.data,
-              role: "jobseeker",
             })
           );
         }

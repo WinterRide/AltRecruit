@@ -32,7 +32,7 @@ export default function UserDropdown({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
-      <DropdownMenuContent className="w-fit min-w-0">
+      <DropdownMenuContent className="w-fit">
         <div className="w-full rounded p-1 flex flex-col">
           <span className="text-xs">Role</span>
           <span className="font-semibold flex items-center">
@@ -40,8 +40,8 @@ export default function UserDropdown({
           </span>
         </div>
         <DropdownMenuSeparator />
-        <Link href="/account" className="flex gap-2">
-          <DropdownMenuItem>
+        <Link href="/account" className="w-full">
+          <DropdownMenuItem className="w-full flex gap-2">
             <SquareUser size={18} strokeWidth={1.5} />
             Profile
           </DropdownMenuItem>
