@@ -16,8 +16,8 @@ export default function UserDropdown({
   children: React.ReactNode | React.ReactNode[];
   role: string;
 }) {
-  function capitalize(string: string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+  function capitalize(str: string) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
   function handleLogout() {
