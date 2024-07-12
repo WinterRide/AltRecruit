@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/hooks/auth";
-import { register } from "module";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Index() {
   const router = useRouter();
@@ -23,6 +23,7 @@ export default function Index() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confPassword, setConfPassword] = useState("");
+  const [role, setRole] = useState<"company" | "jobseeker">("jobseeker");
   const [shouldRemember, setShouldRemember] = useState(false);
   const [errors, setErrors] = useState([]);
   const [status, setStatus] = useState(null);
@@ -120,6 +121,25 @@ export default function Index() {
                 autoComplete="current-password"
               />
             </div>
+            <Tabs defaultValue="jobseeker" className="w-full">
+              <TabsList className="w-full border">
+                <TabsTrigger
+                  value="jobseeker"
+                  className="w-full"
+                  onClick={() => setRole("jobseeker")}
+                >
+                  Job Seeker
+                </TabsTrigger>
+                <TabsTrigger
+                  value="company"
+                  className="w-full"
+                  onClick={() => setRole("company")}
+                >
+                  Recruiter
+                </TabsTrigger>
+              </TabsList>
+            </Tabs>
+
             <Button type="submit" className="w-full">
               Sign Up
             </Button>
