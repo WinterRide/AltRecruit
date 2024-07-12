@@ -47,7 +47,7 @@ export default function Footer() {
 
   return (
     <div className="flex flex-col items-center justify-center bg-primary text-primary-foreground p-16 gap-8">
-      <h1 className="font-semibold text-2xl">SeekJob</h1>
+      <h1 className="font-semibold text-2xl">AltRecruit</h1>
       <div>
         {links.map((link) => (
           <Button
@@ -73,7 +73,7 @@ export default function Footer() {
           </Button>
         ))}
       </div>
-      <p>&copy; {new Date().getFullYear()} SeekJob. All rights reserved.</p>
+      <p>&copy; {new Date().getFullYear()} AltRecruit. All rights reserved.</p>
     </div>
   );
 }
