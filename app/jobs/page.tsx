@@ -1,13 +1,10 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
 import ListingCard from "@/components/ListingCard";
-import { Checkbox } from "@/components/ui/checkbox";
-import { ChevronDown, ChevronUp } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import FilterComponent from "@/components/FIlterComponent";
+import PopularTab from "@/components/PopularTab";
 
 export default function SearchPage() {
   const [reqOpen, setReqOpen] = useState(false);
@@ -68,7 +65,9 @@ export default function SearchPage() {
         </div>
 
         {/* Popular */}
-        <div className="flex flex-col w-[20%] bg-red-600 max-lg:hidden">3</div>
+        <div className="flex flex-col w-[20%] bg-white shadow-md rounded-lg px-6 py-4 h-[calc(100vh-8rem)] sticky top-[1rem] max-lg:hidden">
+          <PopularTab />
+        </div>
       </main>
     </>
   );
