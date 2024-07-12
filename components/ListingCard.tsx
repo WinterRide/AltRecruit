@@ -11,8 +11,10 @@ import { Button } from "./ui/button";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export default function ListingCard({
+  id,
   company,
   jobdesc,
   criteria,
@@ -20,6 +22,7 @@ export default function ListingCard({
   workStatus,
   requirement,
 }: {
+  id: number;
   company: string;
   jobdesc: string;
   criteria: string[];
@@ -27,6 +30,7 @@ export default function ListingCard({
   workStatus: string;
   requirement: string[];
 }) {
+  const router = useRouter();
   const [reqOpen, setReqOpen] = useState(false);
 
   return (
@@ -74,7 +78,14 @@ export default function ListingCard({
               )}
             />
           </Button>
-          <Button className="rounded-lg px-16 max-md:w-full">Details</Button>
+          <Button
+            className="rounded-lg px-16 max-md:w-full"
+            onClick={() => {
+              router.push(`/jobs/${id}`);
+            }}
+          >
+            Details
+          </Button>
         </CardFooter>
       </Card>
       <CardContent

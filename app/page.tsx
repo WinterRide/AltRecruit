@@ -2,6 +2,7 @@ import ListingCard from "@/components/ListingCard";
 
 const testCases = [
   {
+    id: 1,
     company: "Company 1",
     jobdesc: "Job Description 1",
     criteria: ["Criteria 1", "Criteria 2", "Criteria 3", "test", "test"],
@@ -10,6 +11,7 @@ const testCases = [
     requirement: ["Requirement 1", "Requirement 2", "Requirement 3"],
   },
   {
+    id: 1,
     company: "Company 2",
     jobdesc: "Job Description 2",
     criteria: ["Criteria 1", "Criteria 2", "Criteria 3", "test"],
@@ -18,6 +20,7 @@ const testCases = [
     requirement: ["Requirement 1", "Requirement 2", "Requirement 3"],
   },
   {
+    id: 1,
     company: "Company 3",
     jobdesc: "Job Description 3",
     criteria: ["Criteria 1", "Criteria 2", "Criteria 3", "test", "test", "test"],

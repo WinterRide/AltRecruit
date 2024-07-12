@@ -15,7 +15,7 @@ const FilterComponent = ({
   const [reqOpen2, setReqOpen2] = useState(false);
 
   return (
-    <div className="flex flex-col w-[20%] bg-white shadow-md rounded-lg px-6 py-4 h-[calc(100vh-8rem)] sticky top-[1rem]">
+    <div className="flex flex-col w-[20%] bg-white shadow-md rounded-lg px-6 py-4 h-[calc(100vh-8rem)] sticky top-[1rem] max-lg:hidden">
       <p className="w-full justify-start items-center text-2xl font-bold">
         Filters
       </p>
