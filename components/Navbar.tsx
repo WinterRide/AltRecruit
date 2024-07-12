@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import UserDropdown from "./UserDropdown";
+import { getInitials } from "@/lib/utils";
 
 export default function Navbar() {
   const [user, setUser] = useState<{
@@ -24,13 +25,6 @@ export default function Navbar() {
       setUser(JSON.parse(user));
     }
   }, []);
-
-  function getInitials(name: string) {
-    return name
-      .split(" ")
-      .map((n) => n[0].toLocaleUpperCase())
-      .join("");
-  }
 
   return (
     <nav className="flex justify-between items-center px-8 py-6 bg-primary text-background">
@@ -53,7 +47,7 @@ export default function Navbar() {
             variant="link"
             className="text-primary-foreground text-[1rem]"
           >
-            <Link href="/history">History</Link>
+            <Link href="/about">About</Link>
           </Button>
         </div>
       </div>
