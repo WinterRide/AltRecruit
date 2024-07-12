@@ -62,14 +62,17 @@ export default function ListingCard({
           </div>
         </CardContent>
         <CardFooter className="flex flex-row items-start justify-between">
-          <Button variant="link" className="text-lg p-0 max-md:hidden">
-            <p>View requirements</p>
+          <Button
+            onClick={() => setReqOpen(!reqOpen)}
+            variant="link"
+            className="text-lg p-0 max-md:hidden"
+          >
+            View requirements
             <ChevronDown
               className={cn(
                 "w-6 h-6 ml-2 transition-all",
                 reqOpen && "transform -rotate-180"
               )}
-              onClick={() => setReqOpen(!reqOpen)}
             />
           </Button>
           <Button className="rounded-lg px-16 max-md:w-full">Details</Button>
