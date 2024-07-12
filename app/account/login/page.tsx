@@ -1,18 +1,49 @@
+'use client'
+
 import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from "react";
+import { useAuth } from '@/hooks/auth';
+
 
 export default function Index() {
-  async function handleSubmit(formData: FormData) {
-    "use server";
 
-    const email = formData.get("email") as string;
-    const password = formData.get("password") as string;
+  const router = useRouter();
 
-    // ! API CALL HERE
+  const { login } = useAuth({
+    middleware: 'guest',
+    redirectIfAuthenticated: '/',
+  })
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [shouldRemember, setShouldRemember] = useState(false)
+  const [errors, setErrors] = useState([])
+  const [status, setStatus] = useState(null)
+
+  useEffect(() => {
+    if (router.reset?.length > 0 && errors.length === 0) {
+      setStatus(atob(router.reset))
+    } else {
+      setStatus(null)
+    }
+  })
+
+  const submitForm = async (event: any) => {
+    event.preventDefault()
+
+    login({
+      email,
+      password,
+      remember: shouldRemember,
+      setErrors,
+      setStatus,
+    })
   }
 
   return (
@@ -27,7 +58,7 @@ export default function Index() {
         />
       </div>
       <div className="flex items-center justify-center py-12">
-        <form action={handleSubmit} className="mx-auto grid w-[350px] gap-6">
+        <form onSubmit={submitForm} className="mx-auto grid w-[350px] gap-6">
           <div className="grid gap-2 text-center">
             <h1 className="text-3xl font-bold">Login</h1>
             <p className="text-balance text-muted-foreground">
@@ -41,8 +72,11 @@ export default function Index() {
                 id="email"
                 type="email"
                 name="email"
+                value={email}
                 placeholder="email@example.com"
                 required
+                onChange={event => setEmail(event.target.value)}
+                autoFocus
               />
             </div>
             <div className="grid gap-2">
@@ -59,9 +93,13 @@ export default function Index() {
                 id="password"
                 type="password"
                 name="password"
+                value={password}
                 placeholder="••••••••"
+                onChange={event => setPassword(event.target.value)}
                 required
+                autoComplete="current-password"
               />
+              
             </div>
             <Button type="submit" className="w-full">
               Login
