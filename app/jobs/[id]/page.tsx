@@ -1,5 +1,16 @@
 "use client";
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import DetailsSchedulesCard from "@/components/DetailsSchedulesCard";
 import { Button } from "@/components/ui/button";
 import {
@@ -54,6 +65,8 @@ export default function JobPage() {
     ],
   });
 
+  const [alertOpen, setAlertOpen] = useState(false);
+
   useEffect(() => {
     // ! Fetch job data by id
     // ! Fetch test data by id
@@ -61,6 +74,14 @@ export default function JobPage() {
 
   async function handleApply() {
     // ! API CALL HERE
+    // ! Check if user data is complete (dah lengkapin data)
+    // ! Kalo blom lengkap ini munculin alert
+
+    const incomplete = true;
+    if (incomplete) {
+      setAlertOpen(true);
+    }
+
     // ! Add the listing to the user's history, applied
   }
 
@@ -146,6 +167,22 @@ export default function JobPage() {
         </div>
       </div>
       <DetailsSchedulesCard schedule={test.schedule} onApply={handleApply} />
+      <AlertDialog open={alertOpen} onOpenChange={(v) => setAlertOpen(v)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Profile Data Incomplete</AlertDialogTitle>
+            <AlertDialogDescription>
+              Please fill in your profile data before applying to this job.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Close</AlertDialogCancel>
+            <AlertDialogAction onClick={() => router.push("/account")}>
+              Go to Profile
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
