@@ -42,7 +42,7 @@ export default function Index() {
       name,
       email,
       password,
-      confPassword,
+      password_confirmation: confPassword,
       remember: shouldRemember,
       setErrors,
       setStatus,

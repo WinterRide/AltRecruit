@@ -5,6 +5,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useAuth } from "@/hooks/auth";
 import { capitalize } from "@/lib/utils";
 import { LogOut, SquareUser } from "lucide-react";
 import Link from "next/link";
@@ -17,8 +18,13 @@ export default function UserDropdown({
   children: React.ReactNode | React.ReactNode[];
   role: string;
 }) {
+  const { logout } = useAuth({
+    middleware: "guest",
+    redirectIfAuthenticated: "/",
+  });
+
   function handleLogout() {
-    // ! API CALL HERE
+    logout();
     localStorage.removeItem("user");
     redirect("/");
   }

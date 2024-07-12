@@ -30,7 +30,7 @@ export default function Index() {
     } else {
       setStatus(null);
     }
-  });
+  }, []);
 
   const submitForm = async (event: any) => {
     event.preventDefault();

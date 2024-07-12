@@ -47,7 +47,8 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         if (error.response.status !== 422) throw error;
 
         setErrors(error.response.data.errors);
-      });
+      })
+      .then(() => window.location.reload());
   };
 
   const login = async ({ setErrors, setStatus, ...props }) => {
@@ -63,7 +64,8 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         if (error.response.status !== 422) throw error;
 
         setErrors(error.response.data.errors);
-      });
+      })
+      .then(() => window.location.reload());
   };
 
   const forgotPassword = async ({ setErrors, setStatus, email }) => {
@@ -111,7 +113,8 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
       await axios.post("/logout").then(() => mutate());
     }
 
-    window.location.pathname = "/login";
+    window.location.pathname = "/";
+    window.location.reload();
   };
 
   useEffect(() => {
