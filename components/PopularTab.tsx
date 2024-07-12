@@ -14,8 +14,15 @@ const PopularTab = ({
   popularroles,
   toprecruiters,
 }: {
-  popularroles: object;
-  toprecruiters: object;
+  popularroles: {
+    role: string;
+    requirements: string;
+    hired: number;
+  }[];
+  toprecruiters: {
+    role: string;
+    hired: number;
+  }[];
 }) => {
   return (
     <>
